@@ -84,6 +84,15 @@ class ReconstructionTrainer:
         z_last = zs[-1]
         grad = -2 * np.outer(error.flatten(), z_last)
         self.hierarchical.decoders[0] -= lr * grad
+        # --- Attention learning: update attention weights ---
+        # Compute gradient of loss w.r.t. attn_map (approximate: error * input)
+        if attn_map is not None:
+            grad_attn_map = -2 * (image - reconstruction) * image  # shape: (H, W)
+            if attn_map.ndim == 3:
+                grad_attn_map = np.broadcast_to(grad_attn_map, attn_map.shape)
+            else:
+                grad_attn_map = grad_attn_map[None, ...]  # add head dim
+            self.attention.update(image, grad_attn_map)
         # Optionally update hierarchical/attention/temporal modules here
         return {
             'input': image,
@@ -139,6 +148,9 @@ class ReconstructionTrainer:
         attn_map = result['attn_map']
         if attn_map is not None and attn_map.ndim == 3 and attn_map.shape[0] == 1:
             attn_map = attn_map.squeeze(0)
+        # Debug: print attention map stats
+        if attn_map is not None:
+            print(f"[Attention Debug] attn_map min: {attn_map.min():.6f}, max: {attn_map.max():.6f}, mean: {attn_map.mean():.6f}, shape: {attn_map.shape}")
         visualizer.update(
             input_img=result['input'],
             recon_img=result['reconstruction'],

@@ -16,7 +16,11 @@ class LetterImageGenerator:
             fonts = ['arial', 'timesnewroman', 'comicsansms', 'calibri', 'couriernew', 'verdana']
         self.fonts = fonts
         self.font_size = font_size
-        self.letters = [str(i) for i in range(10)]  # Only digits 0-9
+        # All digits, lowercase, uppercase, and common symbols
+        self.letters = [str(i) for i in range(10)] + \
+            [chr(i) for i in range(ord('a'), ord('z')+1)] + \
+            [chr(i) for i in range(ord('A'), ord('Z')+1)] + \
+            list("!@#$%^&*()_+-=[]{}|;:'\"<>,.?/~`\\")
         # Per-letter augmentation parameters
         self.default_aug_params = {
             'angle': 20,
