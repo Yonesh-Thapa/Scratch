@@ -1,0 +1,5 @@
+# For reproducibility and minimal dependencies
+numpy
+matplotlib
+pygame
+scipy
