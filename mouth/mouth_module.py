@@ -6,10 +6,18 @@ import sys, os
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__) + '/../'))
 
 import os
-import numpy as np
+try:
+    import numpy as np
+except ImportError:
+    print("[MouthModule] numpy is required but not installed")
+    sys.exit(1)
 import socket
 import pickle
-import sounddevice as sd
+try:
+    import sounddevice as sd
+except ImportError:  # pragma: no cover - optional dependency
+    sd = None
+    print("[MouthModule] sounddevice not available, audio playback disabled")
 from scipy.signal import sawtooth, square
 from symbols import SYMBOLS
 import atexit
@@ -72,6 +80,9 @@ class MouthModule:
         return error
 
     def play(self, audio):
+        if sd is None:
+            print("[MouthModule] sounddevice unavailable, cannot play audio")
+            return
         sd.play(audio, SAMPLE_RATE)
         sd.wait()
 
@@ -84,26 +95,46 @@ class MouthModule:
             while True:
                 conn, addr = s.accept()
                 with conn:
-                    data = b''
-                    while True:
-                        packet = conn.recv(4096)
-                        if not packet:
-                            break
-                        data += packet
-                    msg = pickle.loads(data)
-                    if msg['cmd'] == 'speak':
-                        symbol_idx = msg['symbol_idx']
-                        audio = self.synthesize(symbol_idx)
-                        conn.sendall(pickle.dumps({'audio': audio}))
-                    elif msg['cmd'] == 'learn':
-                        symbol_idx = msg['symbol_idx']
-                        feedback_audio = msg['feedback_audio']
-                        error = self.update(symbol_idx, feedback_audio)
-                        conn.sendall(pickle.dumps({'error': error}))
-                    elif msg['cmd'] == 'play':
-                        audio = msg['audio']
-                        self.play(audio)
-                        conn.sendall(pickle.dumps({'status': 'played'}))
+                    try:
+                        data = b''
+                        while True:
+                            packet = conn.recv(4096)
+                            if not packet:
+                                break
+                            data += packet
+                        if not data:
+                            continue
+                        msg = pickle.loads(data)
+                        if msg['cmd'] == 'speak':
+                            symbol_idx = msg['symbol_idx']
+                            if 0 <= symbol_idx < self.n_symbols:
+                                audio = self.synthesize(symbol_idx)
+                            else:
+                                print(f"[MouthModule] Invalid symbol_idx: {symbol_idx}")
+                                audio = np.zeros(int(SAMPLE_RATE * DURATION), dtype=np.float32)
+                            response = {'audio': audio}
+                        elif msg['cmd'] == 'learn':
+                            symbol_idx = msg['symbol_idx']
+                            feedback_audio = msg['feedback_audio']
+                            if 0 <= symbol_idx < self.n_symbols:
+                                error = self.update(symbol_idx, feedback_audio)
+                            else:
+                                print(f"[MouthModule] Invalid symbol_idx for learn: {symbol_idx}")
+                                error = np.zeros(int(SAMPLE_RATE * DURATION))
+                            response = {'error': error}
+                        elif msg['cmd'] == 'play':
+                            audio = msg['audio']
+                            self.play(audio)
+                            response = {'status': 'played'}
+                        else:
+                            response = {'error': 'Unknown command'}
+                        conn.sendall(pickle.dumps(response))
+                    except Exception as e:
+                        print(f"[MouthModule] Error: {e}")
+                        try:
+                            conn.sendall(pickle.dumps({'error': str(e)}))
+                        except Exception as send_err:
+                            print(f"[MouthModule] Failed to send error response: {send_err}")
 
 def signal_handler(sig, frame):
     print('Exiting MouthModule...')
