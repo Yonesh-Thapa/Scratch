@@ -1,100 +1,197 @@
-
+2025-06-22 17:19:06,012 [INFO] 
 === Training cycles for symbol: 0 ===
-Cycle 1
-Warning: No response from VisionModule.
-Warning: No response from HandModule.
-Warning: No response from EarModule.
-Warning: No response from MouthModule.
-Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
-Cycle 2
-Warning: No response from VisionModule.
-Warning: No response from HandModule.
-Warning: No response from EarModule.
-Warning: No response from MouthModule.
-Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
-Cycle 3
-Warning: No response from VisionModule.
-Warning: No response from HandModule.
-Warning: No response from EarModule.
-Warning: No response from MouthModule.
-Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
-Cycle 4
-Warning: No response from VisionModule.
-Warning: No response from HandModule.
-Warning: No response from EarModule.
-Warning: No response from MouthModule.
-Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
-Cycle 5
-Warning: No response from VisionModule.
-Warning: No response from HandModule.
-Warning: No response from EarModule.
-Warning: No response from MouthModule.
-Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
-Cycle 6
-Warning: No response from VisionModule.
-Warning: No response from HandModule.
-Warning: No response from EarModule.
-Warning: No response from MouthModule.
-Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
-Cycle 7
-Warning: No response from VisionModule.
-Warning: No response from HandModule.
-Warning: No response from EarModule.
-Warning: No response from MouthModule.
-Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
-Cycle 8
-Warning: No response from VisionModule.
-Warning: No response from HandModule.
-Warning: No response from EarModule.
-Warning: No response from MouthModule.
-Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
-Cycle 9
-Warning: No response from VisionModule.
-Warning: No response from HandModule.
-Warning: No response from EarModule.
-Warning: No response from MouthModule.
-Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
-Cycle 10
-Warning: No response from VisionModule.
-Warning: No response from HandModule.
-Warning: No response from EarModule.
-Warning: No response from MouthModule.
-Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
-Metrics for 0 saved to tests/metrics_0.npz
-
-=== Training cycles for symbol: 1 ===
-Cycle 1
-Warning: No response from VisionModule.
-Warning: No response from HandModule.
-Warning: No response from EarModule.
-Warning: No response from MouthModule.
-Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
-Cycle 2
-Warning: No response from VisionModule.
-Warning: No response from HandModule.
-Warning: No response from EarModule.
-Warning: No response from MouthModule.
-Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
-Cycle 3
-Warning: No response from VisionModule.
-Warning: No response from HandModule.
-Warning: No response from EarModule.
-Warning: No response from MouthModule.
-Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
-Cycle 4
-Warning: No response from VisionModule.
-Warning: No response from HandModule.
-
+2025-06-22 17:19:06,019 [INFO] [DEBUG] Saved loaded image for 0 to tests/debug_loaded_0.png
+2025-06-22 17:19:06,019 [INFO] [DEBUG] Raw pixel values for 0: min=0.0, max=1.0, mean=0.9258553385734558, std=0.23479323089122772
+2025-06-22 17:19:08,723 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -218.5116
+2025-06-22 17:19:09,425 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -419.9231
+2025-06-22 17:19:09,843 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -358.2563
+2025-06-22 17:19:10,315 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -252.6450
+2025-06-22 17:19:10,748 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -238.2780
+2025-06-22 17:19:11,256 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -362.4237
+2025-06-22 17:19:11,757 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -267.4941
+2025-06-22 17:19:11,987 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:19:12,023 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:19:12,247 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -381.4290
+2025-06-22 17:19:12,746 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -304.5797
+2025-06-22 17:19:13,315 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -383.5263
+2025-06-22 17:19:13,860 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -378.2866
+2025-06-22 17:19:14,272 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -240.7037
+2025-06-22 17:19:14,739 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -263.0092
+2025-06-22 17:19:15,199 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -446.3445
+2025-06-22 17:19:15,708 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -227.7200
+2025-06-22 17:19:15,928 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:19:15,935 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:19:16,133 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -226.5172
+2025-06-22 17:19:16,591 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -334.5513
+2025-06-22 17:19:16,993 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -225.8262
+2025-06-22 17:19:17,463 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -222.9946
+2025-06-22 17:19:17,976 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -425.6181
+2025-06-22 17:19:18,404 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -331.9950
+2025-06-22 17:19:18,857 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -286.5999
+2025-06-22 17:19:19,268 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -225.1636
+2025-06-22 17:19:19,515 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:19:19,525 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:19:19,787 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -211.8335
+2025-06-22 17:19:20,314 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -321.9432
+2025-06-22 17:19:20,730 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -292.1920
+2025-06-22 17:19:21,111 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -315.9876
+2025-06-22 17:19:21,599 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -237.0845
+2025-06-22 17:19:22,028 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -222.7106
+2025-06-22 17:19:22,441 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -450.2573
+2025-06-22 17:19:22,890 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -211.0181
+2025-06-22 17:19:23,164 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:19:23,187 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:19:23,437 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -349.2919
+2025-06-22 17:19:23,923 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -241.1357
+2025-06-22 17:19:24,386 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -415.1073
+2025-06-22 17:19:24,847 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -235.3416
+2025-06-22 17:19:25,313 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -225.4039
+2025-06-22 17:19:25,808 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -201.4001
+2025-06-22 17:19:26,255 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -231.7113
+2025-06-22 17:19:26,731 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -446.3238
+2025-06-22 17:19:26,955 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:19:26,979 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:19:27,225 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -335.8200
+2025-06-22 17:19:27,756 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -220.6072
+2025-06-22 17:19:28,182 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -207.1607
+2025-06-22 17:19:28,635 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -369.3272
+2025-06-22 17:19:29,190 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -228.5623
+2025-06-22 17:19:29,630 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -249.3712
+2025-06-22 17:19:30,068 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -225.3905
+2025-06-22 17:19:30,527 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -447.6968
+2025-06-22 17:19:30,783 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:19:30,802 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:19:31,091 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -243.5003
+2025-06-22 17:19:31,557 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -426.7288
+2025-06-22 17:19:31,999 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -237.1391
+2025-06-22 17:19:32,457 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -233.2790
+2025-06-22 17:19:32,864 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -235.6167
+2025-06-22 17:19:33,282 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -232.1881
+2025-06-22 17:19:33,739 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -214.5099
+2025-06-22 17:19:34,191 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -217.6952
+2025-06-22 17:19:34,430 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:19:34,440 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:19:34,659 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -339.7553
+2025-06-22 17:19:35,092 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -235.4132
+2025-06-22 17:19:35,491 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -225.0276
+2025-06-22 17:19:35,973 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -232.1977
+2025-06-22 17:19:36,370 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -351.2475
+2025-06-22 17:19:36,790 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -229.6376
+2025-06-22 17:19:37,257 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -246.5398
+2025-06-22 17:19:37,773 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -246.0541
+2025-06-22 17:19:38,055 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:19:38,061 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:19:38,258 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -229.1379
+2025-06-22 17:19:38,677 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -217.7914
+2025-06-22 17:19:39,194 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -452.0912
+2025-06-22 17:19:39,656 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -206.4456
+2025-06-22 17:19:40,159 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -225.1271
+2025-06-22 17:19:40,659 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -361.2655
+2025-06-22 17:19:41,175 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -226.7711
+2025-06-22 17:19:41,642 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -215.8771
+2025-06-22 17:19:41,910 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:19:41,919 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:19:42,196 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -258.8516
+2025-06-22 17:19:42,658 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -333.6915
+2025-06-22 17:19:43,094 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -246.9810
+2025-06-22 17:19:43,584 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -347.4576
+2025-06-22 17:19:44,173 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -345.2981
+2025-06-22 17:19:44,603 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -242.7690
+2025-06-22 17:19:45,027 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -239.7371
+2025-06-22 17:19:45,508 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -458.1319
+2025-06-22 17:19:45,757 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:19:45,762 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:19:45,993 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -224.3620
+2025-06-22 17:19:46,475 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -393.0519
+2025-06-22 17:19:46,924 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -350.1084
+2025-06-22 17:19:47,442 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -380.2978
+2025-06-22 17:19:47,848 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -242.3670
+2025-06-22 17:19:48,250 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -259.5110
+2025-06-22 17:19:48,709 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -249.4485
+2025-06-22 17:19:49,181 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -280.0616
+2025-06-22 17:19:49,398 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:19:49,407 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:19:49,602 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -214.0772
+2025-06-22 17:19:50,024 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -220.3433
+2025-06-22 17:19:50,495 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -422.4675
+2025-06-22 17:19:50,893 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -455.8896
+2025-06-22 17:19:51,291 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -223.9850
+2025-06-22 17:19:51,729 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -307.0416
+2025-06-22 17:19:52,130 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -286.1248
+2025-06-22 17:19:52,541 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -237.1979
+2025-06-22 17:19:52,798 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:19:52,802 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:19:52,982 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -232.7056
+2025-06-22 17:19:53,432 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -429.9535
+2025-06-22 17:19:53,897 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -221.9216
+2025-06-22 17:19:54,378 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -416.7452
+2025-06-22 17:19:54,823 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -446.7711
+2025-06-22 17:19:55,272 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -232.9923
+2025-06-22 17:19:55,697 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -393.5046
+2025-06-22 17:19:56,111 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -356.1089
+2025-06-22 17:19:56,362 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:19:56,396 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:19:56,650 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -230.7518
+2025-06-22 17:19:57,186 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -241.4558
+2025-06-22 17:19:57,660 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -231.1051
+2025-06-22 17:19:58,168 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -344.9812
+2025-06-22 17:19:58,655 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -236.9054
+2025-06-22 17:19:59,095 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -247.2319
+2025-06-22 17:19:59,590 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -240.4826
+2025-06-22 17:20:00,030 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -297.4059
+2025-06-22 17:20:00,308 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:20:00,322 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:20:00,541 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -240.8826
+2025-06-22 17:20:00,982 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -299.5745
+2025-06-22 17:20:01,431 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -213.7461
+2025-06-22 17:20:01,875 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -218.9126
+2025-06-22 17:20:02,348 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -263.3232
+2025-06-22 17:20:02,821 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -292.6113
+2025-06-22 17:20:03,241 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -241.7032
+2025-06-22 17:20:03,750 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -217.8744
+2025-06-22 17:20:04,043 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:20:04,056 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:20:04,325 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -214.2255
+2025-06-22 17:20:04,808 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -215.4007
+2025-06-22 17:20:05,313 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -368.9039
+2025-06-22 17:20:05,769 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -217.0953
+2025-06-22 17:20:06,226 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -383.3263
+2025-06-22 17:20:06,706 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -196.1834
+2025-06-22 17:20:07,176 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -215.2818
+2025-06-22 17:20:07,695 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -351.8564
+2025-06-22 17:20:07,976 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:20:07,995 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:20:08,204 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -209.1044
+2025-06-22 17:20:08,677 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -356.0341
+2025-06-22 17:20:09,145 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -226.9606
+2025-06-22 17:20:09,677 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -214.2834
+2025-06-22 17:20:10,143 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -344.9905
+2025-06-22 17:20:10,633 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -428.2928
+2025-06-22 17:20:11,063 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -225.1069
+2025-06-22 17:20:11,525 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -211.3979
+2025-06-22 17:20:11,756 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:20:11,771 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:20:12,058 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -216.4484
+2025-06-22 17:20:12,515 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -231.9945
+2025-06-22 17:20:12,997 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -212.2074
+2025-06-22 17:20:13,507 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -241.8701
+2025-06-22 17:20:13,988 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -225.2212
+2025-06-22 17:20:14,462 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -440.1703
+2025-06-22 17:20:14,954 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -232.1389
+2025-06-22 17:20:15,396 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -227.6879
+2025-06-22 17:20:15,652 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:20:15,666 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:20:15,884 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -216.8476
+2025-06-22 17:20:16,341 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -236.3327
+2025-06-22 17:20:16,827 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -222.6392
+2025-06-22 17:20:17,327 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -235.0632
+2025-06-22 17:20:17,776 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -232.4949
+2025-06-22 17:20:18,277 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -279.7841
+2025-06-22 17:20:18,763 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -246.0371
+2025-06-22 17:20:19,275 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 1, Mouth sim: -224.6254
+2025-06-22 17:20:19,572 [INFO] [Vision] batch_imgs shape: (8, 28, 28), dtype: float32, targets: [0, 0, 0, 0, 0, 0, 0, 0]
+2025-06-22 17:20:19,580 [INFO] [Ear] batch_mfcc_aug shape: (8, 13), dtype: float64
+2025-06-22 17:20:19,848 [INFO] Vision acc: 0, Hand sim: -0.0099, Ear acc: 0, Mouth sim: -233.1570
+2025-06-22 17:20:20,001 [INFO] 
 [Closed Loop] Interrupted by user. Shutting down modules...
-Traceback (most recent call last):
-  File "C:\Users\yones\Scratch\tests\test_closed_loop.py", line 178, in <module>
-    vision.send({'cmd': 'shutdown'})
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\yones\Scratch\comms\comms.py", line 17, in send
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Program Files\Python313\Lib\socket.py", line 233, in __init__
-    _socket.socket.__init__(self, family, type, proto, fileno)
-    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-KeyboardInterrupt
-QObject::~QObject: Timers cannot be stopped from another thread
+2025-06-22 17:20:20,006 [INFO] [Closed Loop] All modules shutdown signal sent.

@@ -9,9 +9,16 @@ class LearningCurvePlot(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         layout = QVBoxLayout(self)
-        self.figure, self.axs = plt.subplots(2, 2, figsize=(8, 6))
-        self.canvas = FigureCanvas(self.figure)
-        layout.addWidget(self.canvas)
+        # Create four separate figures/canvases for each module
+        self.figures = []
+        self.canvases = []
+        self.labels = ['Vision Accuracy', 'Hand Similarity', 'Ear Accuracy', 'Mouth Similarity']
+        for i in range(4):
+            fig, ax = plt.subplots(figsize=(6, 3))
+            canvas = FigureCanvas(fig)
+            layout.addWidget(canvas)
+            self.figures.append((fig, ax))
+            self.canvases.append(canvas)
         self.stats_label = QLabel()
         layout.addWidget(self.stats_label)
         self.setLayout(layout)
@@ -46,28 +53,20 @@ class LearningCurvePlot(QWidget):
 
     def plot_curves(self):
         self.load_metrics()
-        self.figure.clf()
-        axs = self.figure.subplots(2, 2)
-        if not self.metrics:
-            for ax in axs.flat:
+        metric_keys = ['vision_acc', 'hand_sim', 'ear_acc', 'mouth_sim']
+        for i, (fig, ax) in enumerate(self.figures):
+            ax.clear()
+            if not self.metrics:
                 ax.set_title('No metrics found')
                 ax.axis('off')
-            self.canvas.draw()
-            return
-        # Plot all symbols' curves
-        for symbol, data in self.metrics.items():
-            axs[0,0].plot(data['vision_acc'], label=f'{symbol}')
-            axs[0,1].plot(data['hand_sim'], label=f'{symbol}')
-            axs[1,0].plot(data['ear_acc'], label=f'{symbol}')
-            axs[1,1].plot(data['mouth_sim'], label=f'{symbol}')
-        axs[0,0].set_title('Vision Accuracy')
-        axs[0,1].set_title('Hand Similarity')
-        axs[1,0].set_title('Ear Accuracy')
-        axs[1,1].set_title('Mouth Similarity')
-        for ax in axs.flat:
+                self.canvases[i].draw()
+                continue
+            for symbol, data in self.metrics.items():
+                ax.plot(data[metric_keys[i]], label=f'{symbol}')
+            ax.set_title(self.labels[i])
             ax.legend(title='Symbol', fontsize='small')
-        self.figure.tight_layout()
-        self.canvas.draw()
+            fig.tight_layout()
+            self.canvases[i].draw()
 
     def get_stats(self):
         # Show stats for the last symbol

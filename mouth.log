@@ -1,0 +1,595 @@
+2025-06-22 17:18:56,363 [INFO] [Heartbeat] MouthModule is alive and listening...
+2025-06-22 17:18:56,364 [INFO] [MouthModule] Listening on 127.0.0.1:5004
+2025-06-22 17:19:08,718 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:08,719 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:09,419 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:09,420 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:09,839 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:09,839 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:10,310 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:10,310 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:10,743 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:10,744 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:11,252 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:11,252 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:11,752 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:11,752 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:12,086 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:19:12,087 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:19:12,087 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:19:12,242 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:12,243 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:12,742 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:12,742 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:13,310 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:13,311 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:13,856 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:13,856 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:14,267 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:14,268 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:14,734 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:14,734 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:15,194 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:15,194 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:15,703 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:15,704 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:15,959 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:19:15,961 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:19:15,962 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:19:16,128 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:16,129 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:16,586 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:16,586 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:16,989 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:16,989 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:17,458 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:17,459 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:17,971 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:17,972 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:18,399 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:18,399 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:18,851 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:18,852 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:19,264 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:19,264 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:19,572 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:19:19,574 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:19:19,574 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:19:19,782 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:19,782 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:20,310 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:20,310 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:20,725 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:20,725 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:21,107 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:21,107 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:21,594 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:21,594 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:22,022 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:22,023 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:22,436 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:22,437 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:22,885 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:22,886 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:23,251 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:19:23,254 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:19:23,254 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:19:23,433 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:23,433 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:23,919 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:23,919 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:24,376 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:24,377 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:24,842 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:24,843 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:25,298 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:25,300 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:25,801 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:25,802 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:26,250 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:26,250 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:26,364 [INFO] [Heartbeat] MouthModule is alive and listening...
+2025-06-22 17:19:26,726 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:26,727 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:27,011 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:19:27,014 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:19:27,014 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:19:27,212 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:27,213 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:27,751 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:27,752 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:28,176 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:28,176 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:28,630 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:28,631 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:29,185 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:29,186 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:29,626 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:29,626 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:30,063 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:30,063 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:30,522 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:30,523 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:30,903 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:19:30,905 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:19:30,905 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:19:31,086 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:31,086 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:31,551 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:31,551 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:31,994 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:31,995 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:32,452 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:32,452 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:32,860 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:32,860 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:33,278 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:33,278 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:33,735 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:33,735 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:34,186 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:34,186 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:34,465 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:19:34,466 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:19:34,467 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:19:34,654 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:34,655 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:35,088 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:35,088 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:35,485 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:35,486 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:35,969 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:35,969 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:36,365 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:36,366 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:36,785 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:36,786 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:37,253 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:37,253 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:37,768 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:37,769 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:38,085 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:19:38,086 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:19:38,087 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:19:38,254 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:38,254 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:38,672 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:38,673 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:39,190 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:39,190 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:39,651 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:39,652 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:40,155 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:40,155 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:40,651 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:40,651 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:41,171 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:41,171 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:41,638 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:41,638 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:41,984 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:19:41,986 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:19:41,987 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:19:42,191 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:42,192 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:42,653 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:42,653 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:43,089 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:43,090 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:43,579 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:43,579 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:44,168 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:44,168 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:44,598 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:44,598 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:45,017 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:45,018 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:45,504 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:45,504 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:45,817 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:19:45,819 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:19:45,820 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:19:45,989 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:45,989 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:46,470 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:46,470 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:46,919 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:46,920 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:47,436 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:47,437 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:47,843 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:47,844 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:48,245 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:48,246 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:48,685 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:48,685 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:49,176 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:49,177 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:49,446 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:19:49,447 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:19:49,447 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:19:49,597 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:49,598 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:50,020 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:50,020 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:50,491 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:50,491 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:50,889 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:50,889 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:51,285 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:51,286 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:51,724 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:51,724 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:52,125 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:52,125 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:52,536 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:52,537 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:52,831 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:19:52,832 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:19:52,833 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:19:52,978 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:52,978 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:53,428 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:53,428 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:53,893 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:53,893 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:54,374 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:54,374 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:54,819 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:54,819 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:55,267 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:55,267 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:55,692 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:55,693 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:56,106 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:56,107 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:56,365 [INFO] [Heartbeat] MouthModule is alive and listening...
+2025-06-22 17:19:56,477 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:19:56,480 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:19:56,481 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:19:56,644 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:56,644 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:57,181 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:57,182 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:57,648 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:57,649 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:58,164 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:58,164 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:58,650 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:58,650 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:59,085 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:59,086 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:19:59,585 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:19:59,585 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:00,017 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:00,018 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:00,371 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:20:00,372 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:20:00,373 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:20:00,536 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:00,536 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:00,977 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:00,977 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:01,426 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:01,427 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:01,870 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:01,871 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:02,343 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:02,343 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:02,816 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:02,817 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:03,232 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:03,233 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:03,746 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:03,746 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:04,151 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:20:04,152 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:20:04,153 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:20:04,320 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:04,320 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:04,803 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:04,803 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:05,304 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:05,305 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:05,761 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:05,762 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:06,221 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:06,221 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:06,701 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:06,701 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:07,171 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:07,171 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:07,683 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:07,684 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:08,047 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:20:08,049 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:20:08,049 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:20:08,199 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:08,200 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:08,672 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:08,672 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:09,140 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:09,141 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:09,672 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:09,672 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:10,139 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:10,139 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:10,629 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:10,629 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:11,058 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:11,059 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:11,519 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:11,520 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:11,846 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:20:11,849 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:20:11,850 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:20:12,053 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:12,054 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:12,510 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:12,510 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:12,992 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:12,993 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:13,493 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:13,493 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:13,983 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:13,983 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:14,458 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:14,458 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:14,949 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:14,950 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:15,387 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:15,388 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:15,698 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:20:15,700 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:20:15,700 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:20:15,873 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:15,874 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:16,336 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:16,337 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:16,822 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:16,822 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:17,322 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:17,323 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:17,770 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:17,770 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:18,272 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:18,273 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:18,754 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:18,755 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:19,270 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:19,271 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:19,662 [INFO] [MouthModule] Decoded message: {'cmd': 'learn', 'symbol_idx': [0, 0, 0, 0, 0, 0, 0, 0], 'feedback_wave': array([[ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       ...,
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686],
+       [ 0.        ,  0.05874634,  0.11669922, ..., -0.17306519,
+        -0.11672974, -0.05877686]], shape=(8, 8000), dtype=float32), 'lr': 0.01}
+2025-06-22 17:20:19,664 [INFO] [MouthModule] Processing learn command. symbol_idx: [0, 0, 0, 0, 0, 0, 0, 0], feedback_wave type: <class 'numpy.ndarray'>, shape: (8, 8000)
+2025-06-22 17:20:19,664 [ERROR] [MouthModule] Connection error: '<=' not supported between instances of 'int' and 'list'
+2025-06-22 17:20:19,843 [INFO] [MouthModule] Decoded message: {'cmd': 'speak', 'symbol_idx': 0}
+2025-06-22 17:20:19,843 [INFO] [MouthModule] Processing speak command. symbol_idx: 0
+2025-06-22 17:20:20,004 [INFO] [MouthModule] Decoded message: {'cmd': 'shutdown'}
+2025-06-22 17:20:20,005 [INFO] [MouthModule] Shutdown command received. Exiting...
