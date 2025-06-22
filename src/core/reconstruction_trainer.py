@@ -37,7 +37,7 @@ class ReconstructionTrainer:
         self.max_lr = max_lr
         self.alpha = alpha
         self.feature_extractor = FeatureExtractor()
-        self.attention = Attention(input_shape, num_heads)
+        self.attention = Attention(input_shape, num_heads=4, init_scale=2.0, temperature=2.0)
         self.hierarchical = HierarchicalTrainer(input_shape, sdr_dim, latent_dim, num_layers)
         self.temporal = TemporalContext(latent_dim, hidden_dim)
         self.sdr_activity = np.zeros(sdr_dim)  # Track neuron usage
@@ -59,8 +59,14 @@ class ReconstructionTrainer:
         if attended.shape == (1,):
             # Broadcast scalar/1D to image shape
             attended = np.full(expected_shape, attended.item())
-        elif attended.ndim == 1 and attended.shape[0] == np.prod(expected_shape):
-            attended = attended.reshape(expected_shape)
+        elif attended.ndim == 1:
+            # If attended is 1D (e.g., (num_heads,)), broadcast or average to image shape
+            if attended.shape[0] == np.prod(expected_shape):
+                attended = attended.reshape(expected_shape)
+            else:
+                # Broadcast each head's value across a portion of the image, or average if ambiguous
+                # Here, we simply fill the image with the mean value as a robust fallback
+                attended = np.full(expected_shape, attended.mean())
         elif attended.shape != expected_shape:
             raise ValueError(f"Attention output shape {attended.shape} does not match expected {expected_shape}")
         # Diagnostic: print shapes for debugging
@@ -92,6 +98,9 @@ class ReconstructionTrainer:
                 grad_attn_map = np.broadcast_to(grad_attn_map, attn_map.shape)
             else:
                 grad_attn_map = grad_attn_map[None, ...]  # add head dim
+            # Ensure grad_attn_map matches the number of heads for update
+            if grad_attn_map.shape[0] != self.attention.num_heads:
+                grad_attn_map = np.broadcast_to(grad_attn_map, (self.attention.num_heads, *grad_attn_map.shape[1:]))
             self.attention.update(image, grad_attn_map)
         # Optionally update hierarchical/attention/temporal modules here
         return {

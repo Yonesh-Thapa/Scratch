@@ -20,16 +20,17 @@ from src.core.recognizer import Recognizer
 INPUT_SHAPE = (28, 28)
 SDR_DIM = 512
 SPARSITY = 0.05
-LR = 0.01
-MASTERY_THRESHOLD = 0.1  # Stop when all letters have error below this
+LR = 0.05           # Higher initial learning rate
+MASTERY_THRESHOLD = 0.1
 MAX_EPOCHS = 10000
-ALPHA = 0.1  # Plasticity modulation factor
-MIN_LR = 1e-5
+ALPHA = 0.1
+MIN_LR = 1e-4       # Higher min LR
 MAX_LR = 0.1
 MOVING_AVG_N = 20
 STAGNATION_STEPS = 10
-FORCED_EXPLORATION_STEPS = 5  # Steps of net negative reward before forced exploration
+FORCED_EXPLORATION_STEPS = 5
 N_CONSECUTIVE_NEGATIVE = 5
+EASY_EPOCHS = 20    # Number of epochs with easy mode
 
 # Argument parser
 parser = argparse.ArgumentParser()
@@ -95,27 +96,24 @@ try:
         rewards = []
         diversity_scores = []
         penalty_counts = None
+        # EASY MODE for first N epochs
+        easy_mode = epoch < EASY_EPOCHS
         for letter in letters:
-            # Curriculum: set augmentation based on RL phase
-            phase = rl.get_curriculum_phase(letter)
-            if args.debug or phase == 0:
+            # Curriculum: set augmentation based on RL phase or easy mode
+            if args.debug or easy_mode or rl.get_curriculum_phase(letter) == 0:
                 generator.set_minimal_augmentation(letter)
-            elif phase == 1:
+            elif rl.get_curriculum_phase(letter) == 1:
                 generator.set_medium_augmentation(letter)
             else:
                 generator.aug_params[letter] = generator.default_aug_params.copy()
-            # Choose augmentation/action id for diversity tracking
             img, action_id = generator.get_image(letter, augment=True, return_action=True)
-            # Convert action_id dict to a hashable tuple for RL diversity
             if isinstance(action_id, dict):
                 action_id = tuple(sorted(action_id.items()))
             result = trainer.train_step(img, letter=letter)
-            # Update recognizer with the SDR/latent vector for this letter
             recognizer.update(letter, result['zs'][-1])
             valence = 1.0 - np.mean(np.abs(result['error']))
             valence_history.append(valence)
             error = np.mean(np.abs(result['error']))
-            # Track mastered letters
             if error < MASTERY_THRESHOLD:
                 mastered_letters.add(letter)
             else:
@@ -131,62 +129,39 @@ try:
             rewards.append(reward)
             diversity_scores.append(rl.get_diversity_score(letter))
             penalty_counts = rl.get_penalty_counts()
-            # Adaptive plasticity: set per-letter learning rate
             trainer.set_learning_rate(letter, trainer.get_base_lr(letter) * lr_mod)
-            # Forced exploration/curriculum shift
             if forced_exploration:
                 print(f"[StrictRL] Forced exploration triggered for letter {letter}!")
                 generator.increase_augmentation(letter)
                 trainer.set_learning_rate(letter, trainer.get_base_lr(letter) * lr_mod * 2.0)
-            # Recovery logic: if recovery_triggered, reduce augmentation and boost plasticity
             if recovery_triggered:
                 print(f"[RLRecovery] Recovery triggered for letter {letter}!")
                 generator.reduce_augmentation(letter)
                 trainer.set_learning_rate(letter, min(trainer.get_base_lr(letter) * lr_mod * 2.5, MAX_LR * 2))
-            # Replace old visualizer.update call with new modular visualization
             trainer.visualize_step(visualizer, result, label=letter)
             print(f"Epoch {epoch+1} | Letter: {letter} | Prev: {prev_error if prev_error is not None else 'NA'} | Error: {error:.4f} | Reward: {reward:+.4f} | Plasticity: {trainer.get_learning_rate(letter):.5f} | ValenceMA: {rl.get_valence_ma(letter):.4f} | Stag: {rl.stagnation_counter[letter]} | Diversity: {diversity_scores[-1]:.2f} | Event: {rl.log[-1]['event']}")
-            # After training step, recognize and update memory immediately if correct, then recall memory before resuming
-            sdr = result['zs'][-1]
-            pred_label, dist = recognizer.recognize(sdr)
-            if pred_label == letter:
-                print(f"[Recognition] {letter} recognized! Updating and recalling memory before resuming training.")
-                memory.save_decoder(trainer.hierarchical.decoder)
-                memory.save_attention(trainer.attention.W, trainer.attention.b)
-                memory.save_recognizer(recognizer.prototypes)
-                # Recall all
-                loaded = memory.load_decoder()
-                if loaded is not None:
-                    trainer.hierarchical.decoder = loaded
-                W, b = memory.load_attention()
-                if W is not None and b is not None:
-                    trainer.attention.W = W
-                    trainer.attention.b = b
-                protos = memory.load_recognizer()
-                if protos is not None:
-                    recognizer.prototypes = protos
-            # Save best weights for rollback
+            # Save best weights for rollback (and only save to disk if improved!)
             if error < best_errors[letter]:
                 best_errors[letter] = error
                 best_weights[letter] = copy.deepcopy(trainer.hierarchical.decoder)
-            # Rollback if error explodes
+                memory.save_decoder(trainer.hierarchical.decoder)
+                memory.save_attention(trainer.attention.W, trainer.attention.b)
+                memory.save_recognizer(recognizer.prototypes)
+            # Remove save/load from recognition to avoid unnecessary I/O
             if error > best_errors[letter] * 2.5 and best_weights[letter] is not None:
                 print(f"[Rollback] Rolling back {letter} to best state!")
                 trainer.hierarchical.decoder = copy.deepcopy(best_weights[letter])
                 error = best_errors[letter]
-        # Elasticity: grow if needed
         if errors and max(errors) > grow_threshold:
             print("[Elasticity] Growing neurons!")
             trainer.grow_neurons(max_growth)
             visualizer.sdr_dim = trainer.sdr_dim
             visualizer.im_sdr.set_data(np.zeros((1, trainer.sdr_dim)))
-        # Prune rarely used neurons
         if errors and epoch % prune_interval == 0 and epoch > 0:
             print("[Elasticity] Pruning inactive neurons!")
             trainer.prune_neurons(min_activity=2)
             visualizer.sdr_dim = trainer.sdr_dim
             visualizer.im_sdr.set_data(np.zeros((1, trainer.sdr_dim)))
-        # Rewire underperforming neurons
         if errors and epoch % rewire_interval == 0 and epoch > 0:
             underperforming = np.where(trainer.sdr_activity < 2)[0]
             if len(underperforming) > 0:
@@ -197,24 +172,23 @@ try:
             mastered = True
             print(f"All letters mastered! Saving learned patterns...")
             memory.save(trainer.hierarchical.decoder)
-        # Stay in gentle reward mode until all errors < 0.2 for 10 epochs
         if not args.no_rl and rl.reward_mode == 'gentle' and epoch > 10 and errors and all(e < 0.2 for e in errors):
             rl.set_reward_mode('strict')
             print('[RL] Switching to strict reward mode!')
         print(f"Mastered letters so far: {sorted(mastered_letters)}")
 except KeyboardInterrupt:
     print("\n[Exit] Training interrupted by user. Progress saved. Have a great day!")
-    memory.save(trainer.hierarchical.decoder)
+    for letter in letters:
+        if best_weights[letter] is not None:
+            memory.save_decoder(best_weights[letter])
     sys.exit(0)
 
-# Enhanced RL log: epoch, letter, prev_error, new_error, reward, plasticity, moving average valence, event, diversity, penalty counts
 with open("rl_feedback_log.txt", "w") as f:
     for i, entry in enumerate(rl.get_log()):
         f.write(f"Epoch {i+1} | Letter: {entry['letter']} | Prev: {entry['prev_error'] if entry['prev_error'] is not None else 'NA'} | Error: {entry['error']:.4f} | Reward: {entry['reward']:+.4f} | Plasticity: {trainer.get_learning_rate(entry['letter']):.5f} | ValenceMA: {entry['valence_ma']:.4f} | Event: {entry['event']} | Diversity: {entry['diversity']:.2f} | Penalties: {entry['penalty_counts']} | ForcedExploration: {entry['forced_exploration']} | LRMod: {entry['lr_mod']:.3f}\n")
 
 print("Training complete. Close the matplotlib window to exit.")
 
-# --- Recognition/classification demo ---
 print("\nRecognition/classification test:")
 correct = 0
 n_test = 0

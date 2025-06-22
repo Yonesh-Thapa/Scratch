@@ -26,8 +26,18 @@ class MemoryCore:
             return None
 
     def save_attention(self, W, b):
-        np.save(self.attn_path, {'W': W, 'b': b})
-        print(f"[MemoryCore] Saved attention weights to {self.attn_path}")
+        # Robust: check attn_path is a valid filename
+        if not isinstance(self.attn_path, str) or not self.attn_path.strip():
+            print(f"[MemoryCore] ERROR: attn_path is not a valid filename: {self.attn_path}")
+            return
+        if os.path.isdir(self.attn_path):
+            print(f"[MemoryCore] ERROR: attn_path is a directory, not a file: {self.attn_path}")
+            return
+        try:
+            np.save(self.attn_path, {'W': W, 'b': b})
+            print(f"[MemoryCore] Saved attention weights to {self.attn_path}")
+        except Exception as e:
+            print(f"[MemoryCore] ERROR saving attention weights: {e}")
 
     def load_attention(self):
         if os.path.exists(self.attn_path):
