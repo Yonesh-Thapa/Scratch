@@ -7,19 +7,36 @@ sys.path.insert(0, os.path.abspath(os.path.dirname(__file__) + '/../'))
 from symbols import SYMBOLS
 
 import os
-import numpy as np
+try:
+    import numpy as np
+except ImportError:
+    print("[Test] numpy is required but not installed")
+    sys.exit(1)
 import time
 from comms.comms import CommsClient
-from PIL import Image, ImageEnhance, ImageOps
-import librosa
+try:
+    from PIL import Image, ImageEnhance, ImageOps
+except ImportError:
+    Image = ImageEnhance = ImageOps = None
+    print("[Test] PIL not available, image operations disabled")
+try:
+    import librosa
+except ImportError:
+    librosa = None
+    print("[Test] librosa not available, audio processing disabled")
 import random
-import matplotlib.pyplot as plt
+try:
+    import matplotlib.pyplot as plt
+except ImportError:
+    plt = None
+    print("[Test] matplotlib not available, visualization disabled")
 import string
 
 # Config
 # Character set: 0-9, A-Z, a-z, and symbols
 ALL_SYMBOLS = SYMBOLS
-SYMBOLS = [s for s in ALL_SYMBOLS if os.path.exists(f'data/images/{s}.png') and os.path.exists(f'data/audio/{s}.wav')]
+# Use the same SYMBOLS list as all modules to maintain consistent indexing.
+# Individual symbols will be skipped during the loop if data is missing.
 
 N_CYCLES = 10
 MASTERY_THRESHOLD = 0.95  # e.g., 95% accuracy or high similarity
@@ -37,7 +54,9 @@ ear = CommsClient(HOST, EAR_PORT)
 mouth = CommsClient(HOST, MOUTH_PORT)
 
 def augment_image(img):
-    # Randomly apply augmentation: rotation, shift, contrast, noise
+    # Randomly apply augmentation if PIL is available
+    if Image is None:
+        return img
     if random.random() < 0.5:
         angle = random.uniform(-15, 15)
         img = img.rotate(angle)
@@ -63,6 +82,9 @@ for symbol_idx, symbol in enumerate(SYMBOLS):
     audio_path = f'data/audio/{symbol}.wav'
     if not os.path.exists(img_path) or not os.path.exists(audio_path):
         print(f"Missing data for symbol {symbol}, skipping.")
+        continue
+    if Image is None or librosa is None:
+        print("Required libraries for processing are missing, skipping symbol.")
         continue
     base_img = Image.open(img_path).convert('L').resize((28,28))
     img_arr = np.array(base_img).astype(np.float32) / 255.0
@@ -116,31 +138,35 @@ for symbol_idx, symbol in enumerate(SYMBOLS):
         else:
             mouth_audio = mouth_resp['audio']
             # Ear evaluates mouth's speech
-            mfcc_mouth = librosa.feature.mfcc(y=np.array(mouth_audio), sr=16000, n_mfcc=13)
-            mfcc_mouth_mean = np.mean(mfcc_mouth, axis=1)
-            sim_mouth = -np.mean((mfcc_mouth_mean - mfcc_mean)**2)
+            if librosa is not None:
+                mfcc_mouth = librosa.feature.mfcc(y=np.array(mouth_audio), sr=16000, n_mfcc=13)
+                mfcc_mouth_mean = np.mean(mfcc_mouth, axis=1)
+                sim_mouth = -np.mean((mfcc_mouth_mean - mfcc_mean)**2)
+            else:
+                sim_mouth = 0
         mouth_sim.append(sim_mouth)
         mouth.send({'cmd': 'learn', 'symbol_idx': symbol_idx, 'feedback_audio': y_audio[:len(mouth_audio)]})
         print(f"Vision acc: {acc}, Hand sim: {sim:.4f}, Ear acc: {acc_ear}, Mouth sim: {sim_mouth:.4f}")
-        # Visualization
-        plt.clf()
-        plt.subplot(2,2,1)
-        plt.imshow(x_img.reshape(28,28), cmap='gray')
-        plt.title(f'Input {symbol}')
-        plt.axis('off')
-        plt.subplot(2,2,2)
-        plt.imshow(hand_img.reshape(28,28), cmap='gray')
-        plt.title('Hand Output')
-        plt.axis('off')
-        plt.subplot(2,2,3)
-        plt.plot(vision_acc, label='Vision Acc')
-        plt.plot(hand_sim, label='Hand Sim')
-        plt.plot(ear_acc, label='Ear Acc')
-        plt.plot(mouth_sim, label='Mouth Sim')
-        plt.legend()
-        plt.title('Learning Curves')
-        plt.tight_layout()
-        plt.pause(0.01)
+        # Visualization if matplotlib is available
+        if plt is not None:
+            plt.clf()
+            plt.subplot(2,2,1)
+            plt.imshow(x_img.reshape(28,28), cmap='gray')
+            plt.title(f'Input {symbol}')
+            plt.axis('off')
+            plt.subplot(2,2,2)
+            plt.imshow(hand_img.reshape(28,28), cmap='gray')
+            plt.title('Hand Output')
+            plt.axis('off')
+            plt.subplot(2,2,3)
+            plt.plot(vision_acc, label='Vision Acc')
+            plt.plot(hand_sim, label='Hand Sim')
+            plt.plot(ear_acc, label='Ear Acc')
+            plt.plot(mouth_sim, label='Mouth Sim')
+            plt.legend()
+            plt.title('Learning Curves')
+            plt.tight_layout()
+            plt.pause(0.01)
         time.sleep(0.1)
         # Mastery check
         if len(vision_acc) >= 5 and np.mean(vision_acc[-5:]) > MASTERY_THRESHOLD and np.mean(hand_sim[-5:]) > -0.01 and np.mean(ear_acc[-5:]) > MASTERY_THRESHOLD and np.mean(mouth_sim[-5:]) > -0.01:
@@ -149,5 +175,6 @@ for symbol_idx, symbol in enumerate(SYMBOLS):
     # Save metrics for this symbol
     np.savez(f'tests/metrics_{symbol}.npz', vision_acc=vision_acc, hand_sim=hand_sim, ear_acc=ear_acc, mouth_sim=mouth_sim)
     print(f"Metrics for {symbol} saved to tests/metrics_{symbol}.npz")
-plt.show()
+if plt is not None:
+    plt.show()
 print("All symbols processed.")

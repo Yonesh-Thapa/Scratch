@@ -5,11 +5,23 @@ Runs as an independent process, communicates via sockets/IPC.
 import sys, os
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__) + '/../'))
 import os
-import numpy as np
+try:
+    import numpy as np
+except ImportError:
+    print("[HandModule] numpy is required but not installed")
+    sys.exit(1)
 import socket
 import pickle
-import pygame
-from PIL import Image
+try:
+    import pygame
+except ImportError:  # pragma: no cover - optional dependency
+    pygame = None
+    print("[HandModule] pygame not available, running in headless mode")
+try:
+    from PIL import Image
+except ImportError:  # pragma: no cover - optional dependency
+    Image = None
+    print("[HandModule] PIL not available, image functions disabled")
 from symbols import SYMBOLS
 import atexit
 import signal
@@ -70,27 +82,50 @@ class HandModule:
         np.save(MEMORY_PATH, self.W)
 
     def run(self):
-        with conn:
-            try:
-                data = b''
-                while True:
-                    packet = conn.recv(4096)
-                    if not packet:
-                        break
-                    data += packet
-                msg = pickle.loads(data)
-                if msg['cmd'] == 'draw':
-                    symbol_idx = msg['symbol_idx']
-                    img = self.draw_symbol(symbol_idx)
-                    conn.sendall(pickle.dumps({'img': img}))
-                elif msg['cmd'] == 'learn':
-                    symbol_idx = msg['symbol_idx']
-                    feedback_img = msg['feedback_img']
-                    error = self.update(symbol_idx, feedback_img)
-                    conn.sendall(pickle.dumps({'error': error}))
-            except Exception as e:
-                print(f"[HandModule] Exception: {e}")
-                conn.sendall(pickle.dumps({'error': str(e)}))
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            s.bind((HOST, PORT))
+            s.listen(1)
+            print(f"[HandModule] Listening on {HOST}:{PORT}")
+            while True:
+                conn, addr = s.accept()
+                with conn:
+                    try:
+                        data = b''
+                        while True:
+                            packet = conn.recv(4096)
+                            if not packet:
+                                break
+                            data += packet
+                        if not data:
+                            continue
+                        msg = pickle.loads(data)
+                        if msg['cmd'] == 'draw':
+                            symbol_idx = msg['symbol_idx']
+                            if 0 <= symbol_idx < len(self.symbols):
+                                img = self.draw_symbol(symbol_idx)
+                            else:
+                                print(f"[HandModule] Invalid symbol_idx: {symbol_idx}")
+                                img = np.zeros(CANVAS_SIZE, dtype=np.float32)
+                            response = {'img': img}
+                        elif msg['cmd'] == 'learn':
+                            symbol_idx = msg['symbol_idx']
+                            feedback_img = msg['feedback_img']
+                            if 0 <= symbol_idx < len(self.symbols):
+                                error = self.update(symbol_idx, feedback_img)
+                            else:
+                                print(f"[HandModule] Invalid symbol_idx for learn: {symbol_idx}")
+                                error = np.zeros(np.prod(CANVAS_SIZE))
+                            response = {'error': error}
+                        else:
+                            response = {'error': 'Unknown command'}
+                        conn.sendall(pickle.dumps(response))
+                    except Exception as e:
+                        print(f"[HandModule] Exception: {e}")
+                        try:
+                            conn.sendall(pickle.dumps({'error': str(e)}))
+                        except Exception as send_err:
+                            print(f"[HandModule] Failed to send error response: {send_err}")
 def signal_handler(sig, frame):
     print('Exiting HandModule...')
     sys.exit(0)

@@ -5,10 +5,18 @@ Runs as an independent process, communicates via sockets/IPC.
 import sys, os
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__) + '/../'))
 import os
-import numpy as np
+try:
+    import numpy as np
+except ImportError:
+    print("[EarModule] numpy is required but not installed")
+    sys.exit(1)
 import socket
 import pickle
-import librosa
+try:
+    import librosa
+except ImportError:  # pragma: no cover - optional dependency
+    librosa = None
+    print("[EarModule] librosa not available, audio feature extraction disabled")
 from symbols import SYMBOLS
 import atexit
 import signal
@@ -69,22 +77,38 @@ class EarModule:
             while True:
                 conn, addr = s.accept()
                 with conn:
-                    data = b''
-                    while True:
-                        packet = conn.recv(4096)
-                        if not packet:
-                            break
-                        data += packet
-                    msg = pickle.loads(data)
-                    if msg['cmd'] == 'recognize':
-                        x = msg['data']
-                        label, y = self.recognize(x)
-                        conn.sendall(pickle.dumps({'label': label, 'y': y}))
-                    elif msg['cmd'] == 'learn':
-                        x = msg['data']
-                        target_idx = msg['target_idx']
-                        error = self.update(x, target_idx)
-                        conn.sendall(pickle.dumps({'error': error}))
+                    try:
+                        data = b''
+                        while True:
+                            packet = conn.recv(4096)
+                            if not packet:
+                                break
+                            data += packet
+                        if not data:
+                            continue
+                        msg = pickle.loads(data)
+                        if msg['cmd'] == 'recognize':
+                            x = msg['data']
+                            label, y = self.recognize(x)
+                            response = {'label': label, 'y': y}
+                        elif msg['cmd'] == 'learn':
+                            x = msg['data']
+                            target_idx = msg['target_idx']
+                            if 0 <= target_idx < len(self.symbols):
+                                error = self.update(x, target_idx)
+                            else:
+                                print(f"[EarModule] Invalid target_idx: {target_idx}")
+                                error = np.zeros(self.output_dim)
+                            response = {'error': error}
+                        else:
+                            response = {'error': 'Unknown command'}
+                        conn.sendall(pickle.dumps(response))
+                    except Exception as e:
+                        print(f"[EarModule] Error: {e}")
+                        try:
+                            conn.sendall(pickle.dumps({'error': str(e)}))
+                        except Exception as send_err:
+                            print(f"[EarModule] Failed to send error response: {send_err}")
 
 def signal_handler(sig, frame):
     print('Exiting EarModule...')
