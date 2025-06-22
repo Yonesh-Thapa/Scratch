@@ -3,3 +3,5 @@ numpy
 matplotlib
 pygame
 scipy
+librosa
+Pillow

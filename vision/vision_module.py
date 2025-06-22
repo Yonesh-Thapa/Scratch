@@ -67,11 +67,15 @@ class VisionModule:
         return arr.flatten()
 
     def recognize(self, x):
+        # Normalize input
+        x = (x - np.mean(x)) / (np.std(x) + 1e-8)
         y = self.learner.predict(x)
         idx = np.argmax(y)
         return self.symbols[idx], y
 
     def learn(self, x, target_idx):
+        # Normalize input
+        x = (x - np.mean(x)) / (np.std(x) + 1e-8)
         target = np.zeros(self.output_dim)
         target[target_idx] = 1.0
         error = self.learner.update(x, target)

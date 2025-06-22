@@ -49,8 +49,12 @@ class MouthModule:
         return self.W[symbol_idx]
 
     def update(self, symbol_idx, feedback_wave):
+        # Normalize feedback
+        feedback_wave = (feedback_wave - np.mean(feedback_wave)) / (np.std(feedback_wave) + 1e-8)
         error = feedback_wave - self.W[symbol_idx]
         self.W[symbol_idx] += self.lr * error
+        # Clip weights
+        self.W[symbol_idx] = np.clip(self.W[symbol_idx], -10, 10)
         return error
 
     def save_memory(self):

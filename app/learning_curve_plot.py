@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QHBoxLayout
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QTimer
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -19,6 +19,10 @@ class LearningCurvePlot(QWidget):
         self.last_symbol = None
         self.load_metrics()
         self.plot_curves()
+        # Add timer for real-time updates
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.plot_curves)
+        self.timer.start(1000)  # update every 1000 ms (1 second)
 
     def load_metrics(self):
         # Load metrics for all available symbols (from test_closed_loop.py output)
@@ -50,19 +54,18 @@ class LearningCurvePlot(QWidget):
                 ax.axis('off')
             self.canvas.draw()
             return
-        # Plot for the first symbol (or last viewed)
-        symbol = self.last_symbol
-        data = self.metrics[symbol]
-        axs[0,0].plot(data['vision_acc'], label='Vision Acc')
+        # Plot all symbols' curves
+        for symbol, data in self.metrics.items():
+            axs[0,0].plot(data['vision_acc'], label=f'{symbol}')
+            axs[0,1].plot(data['hand_sim'], label=f'{symbol}')
+            axs[1,0].plot(data['ear_acc'], label=f'{symbol}')
+            axs[1,1].plot(data['mouth_sim'], label=f'{symbol}')
         axs[0,0].set_title('Vision Accuracy')
-        axs[0,1].plot(data['hand_sim'], label='Hand Sim')
         axs[0,1].set_title('Hand Similarity')
-        axs[1,0].plot(data['ear_acc'], label='Ear Acc')
         axs[1,0].set_title('Ear Accuracy')
-        axs[1,1].plot(data['mouth_sim'], label='Mouth Sim')
         axs[1,1].set_title('Mouth Similarity')
         for ax in axs.flat:
-            ax.legend()
+            ax.legend(title='Symbol', fontsize='small')
         self.figure.tight_layout()
         self.canvas.draw()
 

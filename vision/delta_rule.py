@@ -14,5 +14,10 @@ class DeltaRuleLearner:
     def update(self, x, target):
         y = self.predict(x)
         error = target - y
+        print(f"[DeltaRuleLearner] Before update: W[0, :5]={self.W[0, :5]}")
         self.W += self.lr * np.outer(error, x)
+        # Clip weights to prevent explosion
+        self.W = np.clip(self.W, -10, 10)
+        print(f"[DeltaRuleLearner] After update: W[0, :5]={self.W[0, :5]}")
+        print(f"[DeltaRuleLearner] Error: {error[:5]}")
         return error

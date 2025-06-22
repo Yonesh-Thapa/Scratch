@@ -50,9 +50,13 @@ class HandModule:
 
     def update(self, symbol_idx, feedback_img):
         flat_feedback = feedback_img.flatten()
+        # Normalize feedback
+        flat_feedback = (flat_feedback - np.mean(flat_feedback)) / (np.std(flat_feedback) + 1e-8)
         pred = self.W[symbol_idx]
         error = flat_feedback - pred
         self.W[symbol_idx] += self.lr * error
+        # Clip weights
+        self.W[symbol_idx] = np.clip(self.W[symbol_idx], -10, 10)
         return error
 
     def save_memory(self):

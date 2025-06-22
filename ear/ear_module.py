@@ -46,16 +46,25 @@ class EarModule:
         atexit.register(self.save_memory)
 
     def recognize(self, feat):
+        # Normalize input
+        feat = (feat - np.mean(feat)) / (np.std(feat) + 1e-8)
         y = np.dot(self.W, feat)
         idx = np.argmax(y)
         return self.symbols[idx], y
 
     def update(self, idx, feat):
+        # Normalize input
+        feat = (feat - np.mean(feat)) / (np.std(feat) + 1e-8)
         target = np.zeros(self.output_dim)
         target[idx] = 1.0
         y = np.dot(self.W, feat)
         error = target - (y == y.max()).astype(np.float32)
+        print(f"[EarModule] Before update: W[0, :5]={self.W[0, :5]}")
         self.W += self.lr * error[:, None] * feat[None, :]
+        # Clip weights
+        self.W = np.clip(self.W, -10, 10)
+        print(f"[EarModule] After update: W[0, :5]={self.W[0, :5]}")
+        print(f"[EarModule] Error: {error[:5]}")
         return error
 
     def save_memory(self):
