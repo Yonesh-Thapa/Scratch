@@ -27,12 +27,22 @@ except ImportError:
 import atexit
 import signal
 import sys
+import struct
 
 # Config
 HOST = '127.0.0.1'
 PORT = 5001
 INPUT_SHAPE = (28, 28)
 MEMORY_PATH = 'vision_weights.npy'
+
+def recvall(conn, n):
+    data = b''
+    while len(data) < n:
+        packet = conn.recv(n - len(data))
+        if not packet:
+            return None
+        data += packet
+    return data
 
 class VisionModule:
     def __init__(self, learning_rule='delta', lr=0.01):
@@ -74,24 +84,56 @@ class VisionModule:
             s.listen(1)
             print(f"[VisionModule] Listening on {HOST}:{PORT}")
             while True:
-                conn, addr = s.accept()
-                with conn:
-                    data = b''
-                    while True:
-                        packet = conn.recv(4096)
-                        if not packet:
-                            break
-                        data += packet
-                    msg = pickle.loads(data)
-                    if msg['cmd'] == 'recognize':
-                        x = msg['data']
-                        label, y = self.recognize(x)
-                        conn.sendall(pickle.dumps({'label': label, 'y': y}))
-                    elif msg['cmd'] == 'learn':
-                        x = msg['data']
-                        target_idx = msg['target_idx']
-                        error = self.learn(x, target_idx)
-                        conn.sendall(pickle.dumps({'error': error}))
+                try:
+                    conn, addr = s.accept()
+                    print(f"[VisionModule] Accepted connection from {addr}")
+                    with conn:
+                        header = recvall(conn, 4)
+                        if not header:
+                            continue
+                        msg_len = struct.unpack('>I', header)[0]
+                        data = recvall(conn, msg_len)
+                        if not data:
+                            continue
+                        try:
+                            msg = pickle.loads(data)
+                            print(f"[VisionModule] Decoded message: {msg}")
+                        except Exception as e:
+                            print(f"[VisionModule] Error decoding message: {e}")
+                            resp = pickle.dumps({'error': f'Error decoding message: {e}'})
+                            resp_len = struct.pack('>I', len(resp))
+                            conn.sendall(resp_len + resp)
+                            continue
+                        try:
+                            if msg['cmd'] == 'recognize':
+                                x = msg['data']
+                                print(f"[VisionModule] Processing recognize command. Data type: {type(x)}, shape: {getattr(x, 'shape', None)}")
+                                label, y = self.recognize(x)
+                                response = {'label': label, 'y': y}
+                            elif msg['cmd'] == 'learn':
+                                x = msg['data']
+                                target_idx = msg['target_idx']
+                                print(f"[VisionModule] Processing learn command. Data type: {type(x)}, shape: {getattr(x, 'shape', None)}, target_idx: {target_idx}")
+                                error = self.learn(x, target_idx)
+                                response = {'error': error}
+                            elif msg['cmd'] == 'shutdown':
+                                print('[VisionModule] Shutdown command received. Exiting...')
+                                response = {'status': 'shutting down'}
+                                resp = pickle.dumps(response)
+                                resp_len = struct.pack('>I', len(resp))
+                                conn.sendall(resp_len + resp)
+                                sys.exit(0)
+                            else:
+                                print(f"[VisionModule] Unknown command: {msg['cmd']}")
+                                response = {'error': f'Unknown command: {msg["cmd"]}'}
+                        except Exception as e:
+                            print(f"[VisionModule] Error processing command: {e}")
+                            response = {'error': f'Error processing command: {e}'}
+                        resp = pickle.dumps(response)
+                        resp_len = struct.pack('>I', len(resp))
+                        conn.sendall(resp_len + resp)
+                except Exception as e:
+                    print(f"[VisionModule] Connection error: {e}")
 
 def signal_handler(sig, frame):
     print('Exiting VisionModule...')
@@ -99,7 +141,7 @@ def signal_handler(sig, frame):
 
 signal.signal(signal.SIGINT, signal_handler)
 
-if __name__ == '__main__':
+if __name__ == '__main__' or __name__.endswith('.vision_module'):
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('--rule', choices=['delta', 'rescorla'], default='delta')

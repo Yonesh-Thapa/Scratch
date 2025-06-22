@@ -4,6 +4,7 @@ Optimized for energy efficiency and minimal data retention.
 """
 import socket
 import pickle
+import struct
 import time
 
 class CommsClient:
@@ -14,26 +15,27 @@ class CommsClient:
 
     def send(self, msg):
         data = pickle.dumps(msg)
+        msg_len = struct.pack('>I', len(data))  # 4-byte big-endian
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.settimeout(self.timeout)
             s.connect((self.host, self.port))
-            s.sendall(data)
-            response = b''
-            while True:
-                try:
-                    packet = s.recv(4096)
-                    if not packet:
-                        break
-                    response += packet
-                except socket.timeout:
-                    break
-            if response:
-                return pickle.loads(response)
+            s.sendall(msg_len + data)
+            # --- Receive length-prefixed reply ---
+            header = self._recvall(s, 4)
+            if not header:
+                return None
+            resp_len = struct.unpack('>I', header)[0]
+            resp_data = self._recvall(s, resp_len)
+            if resp_data:
+                return pickle.loads(resp_data)
             return None
 
-# Example usage:
-# client = CommsClient('127.0.0.1', 5001)
-# resp = client.send({'cmd': 'recognize', 'data': ...})
-
-# This module can be imported by any process to communicate with other modules.
-# No global state, no central controller, only direct message passing.
+    def _recvall(self, sock, n):
+        """Helper to receive n bytes or return None if EOF."""
+        data = b''
+        while len(data) < n:
+            packet = sock.recv(n - len(data))
+            if not packet:
+                return None
+            data += packet
+        return data

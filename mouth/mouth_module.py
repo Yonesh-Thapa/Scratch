@@ -1,10 +1,9 @@
 """
-MouthModule: Synthesizes audio waveforms for each symbol using learnable parameters (no TTS).
+MouthModule: Synthesizes audio (waveforms) for symbols, receives feedback to update.
 Runs as an independent process, communicates via sockets/IPC.
 """
 import sys, os
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__) + '/../'))
-
 import os
 try:
     import numpy as np
@@ -13,75 +12,49 @@ except ImportError:
     sys.exit(1)
 import socket
 import pickle
-try:
-    import sounddevice as sd
-except ImportError:  # pragma: no cover - optional dependency
-    sd = None
-    print("[MouthModule] sounddevice not available, audio playback disabled")
-from scipy.signal import sawtooth, square
-from symbols import SYMBOLS
 import atexit
 import signal
 import sys
+import struct
+from symbols import SYMBOLS
 
 # Config
 HOST = '127.0.0.1'
 PORT = 5004
-SAMPLE_RATE = 16000
-DURATION = 0.5  # seconds
-MEMORY_PATH = 'mouth_params.npz'
+MEMORY_PATH = 'mouth_weights.npy'
+WAVE_DIM = 8000  # E.g., 0.5 sec at 16kHz, or use your default
 
-try:
-    from mouth.mouth_module import MouthModule
-except ImportError:
-    pass  # No internal imports needed, placeholder for consistency
+def recvall(conn, n):
+    data = b''
+    while len(data) < n:
+        packet = conn.recv(n - len(data))
+        if not packet:
+            return None
+        data += packet
+    return data
 
 class MouthModule:
     def __init__(self, lr=0.01):
-        self.n_symbols = len(SYMBOLS)
-        # Each symbol has its own learnable frequency, amplitude, and waveform type
-        self.freqs = np.random.uniform(200, 800, self.n_symbols)
-        self.amps = np.random.uniform(0.2, 0.8, self.n_symbols)
-        self.wave_types = np.random.choice(['sine', 'square', 'sawtooth'], self.n_symbols)
+        self.output_dim = len(SYMBOLS)
+        self.wave_dim = WAVE_DIM
+        self.W = np.random.randn(self.output_dim, self.wave_dim) * 0.01
         self.lr = lr
         self.symbols = SYMBOLS
         # Load memory if exists
         if os.path.exists(MEMORY_PATH):
-            data = np.load(MEMORY_PATH, allow_pickle=True)
-            self.freqs = data['freqs']
-            self.amps = data['amps']
-            self.wave_types = data['wave_types']
+            self.W = np.load(MEMORY_PATH)
         atexit.register(self.save_memory)
 
-    def save_memory(self):
-        np.savez(MEMORY_PATH, freqs=self.freqs, amps=self.amps, wave_types=self.wave_types)
-
     def synthesize(self, symbol_idx):
-        t = np.linspace(0, DURATION, int(SAMPLE_RATE * DURATION), endpoint=False)
-        freq = self.freqs[symbol_idx]
-        amp = self.amps[symbol_idx]
-        wave_type = self.wave_types[symbol_idx]
-        if wave_type == 'sine':
-            audio = amp * np.sin(2 * np.pi * freq * t)
-        elif wave_type == 'square':
-            audio = amp * square(2 * np.pi * freq * t)
-        else:
-            audio = amp * sawtooth(2 * np.pi * freq * t)
-        return audio.astype(np.float32)
+        return self.W[symbol_idx]
 
-    def update(self, symbol_idx, feedback_audio):
-        # Simple Delta Rule: adjust frequency and amplitude to minimize MSE
-        pred_audio = self.synthesize(symbol_idx)
-        error = feedback_audio - pred_audio
-        grad_freq = np.mean(error * 2 * np.pi * self.amps[symbol_idx] * np.cos(2 * np.pi * self.freqs[symbol_idx] * np.linspace(0, DURATION, len(pred_audio), endpoint=False)) * np.linspace(0, DURATION, len(pred_audio), endpoint=False))
-        grad_amp = np.mean(error * np.sin(2 * np.pi * self.freqs[symbol_idx] * np.linspace(0, DURATION, len(pred_audio), endpoint=False)))
-        self.freqs[symbol_idx] += self.lr * grad_freq
-        self.amps[symbol_idx] += self.lr * grad_amp
+    def update(self, symbol_idx, feedback_wave):
+        error = feedback_wave - self.W[symbol_idx]
+        self.W[symbol_idx] += self.lr * error
         return error
 
-    def play(self, audio):
-        sd.play(audio, SAMPLE_RATE)
-        sd.wait()
+    def save_memory(self):
+        np.save(MEMORY_PATH, self.W)
 
     def run(self):
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -90,28 +63,58 @@ class MouthModule:
             s.listen(1)
             print(f"[MouthModule] Listening on {HOST}:{PORT}")
             while True:
-                conn, addr = s.accept()
-                with conn:
-                    data = b''
-                    while True:
-                        packet = conn.recv(4096)
-                        if not packet:
-                            break
-                        data += packet
-                    msg = pickle.loads(data)
-                    if msg['cmd'] == 'speak':
-                        symbol_idx = msg['symbol_idx']
-                        audio = self.synthesize(symbol_idx)
-                        conn.sendall(pickle.dumps({'audio': audio}))
-                    elif msg['cmd'] == 'learn':
-                        symbol_idx = msg['symbol_idx']
-                        feedback_audio = msg['feedback_audio']
-                        error = self.update(symbol_idx, feedback_audio)
-                        conn.sendall(pickle.dumps({'error': error}))
-                    elif msg['cmd'] == 'play':
-                        audio = msg['audio']
-                        self.play(audio)
-                        conn.sendall(pickle.dumps({'status': 'played'}))
+                try:
+                    conn, addr = s.accept()
+                    with conn:
+                        header = recvall(conn, 4)
+                        if not header:
+                            continue
+                        msg_len = struct.unpack('>I', header)[0]
+                        data = recvall(conn, msg_len)
+                        if not data:
+                            continue
+                        try:
+                            msg = pickle.loads(data)
+                            print(f"[MouthModule] Decoded message: {msg}")
+                        except Exception as e:
+                            print(f"[MouthModule] Error decoding message: {e}")
+                            resp = pickle.dumps({'error': f'Error decoding message: {e}'})
+                            resp_len = struct.pack('>I', len(resp))
+                            conn.sendall(resp_len + resp)
+                            continue
+                        if msg['cmd'] == 'speak':
+                            symbol_idx = msg['symbol_idx']
+                            print(f"[MouthModule] Processing speak command. symbol_idx: {symbol_idx}")
+                            if 0 <= symbol_idx < len(self.symbols):
+                                wave = self.synthesize(symbol_idx)
+                            else:
+                                print(f"[MouthModule] Invalid symbol_idx: {symbol_idx}")
+                                wave = np.zeros(self.wave_dim, dtype=np.float32)
+                            response = {'wave': wave}
+                        elif msg['cmd'] == 'learn':
+                            symbol_idx = msg['symbol_idx']
+                            feedback_wave = msg['feedback_wave']
+                            print(f"[MouthModule] Processing learn command. symbol_idx: {symbol_idx}, feedback_wave type: {type(feedback_wave)}, shape: {getattr(feedback_wave, 'shape', None)}")
+                            if 0 <= symbol_idx < len(self.symbols):
+                                error = self.update(symbol_idx, feedback_wave)
+                            else:
+                                print(f"[MouthModule] Invalid symbol_idx for learn: {symbol_idx}")
+                                error = np.zeros(self.wave_dim)
+                            response = {'error': error}
+                        elif msg['cmd'] == 'shutdown':
+                            print('[MouthModule] Shutdown command received. Exiting...')
+                            response = {'status': 'shutting down'}
+                            resp = pickle.dumps(response)
+                            resp_len = struct.pack('>I', len(resp))
+                            conn.sendall(resp_len + resp)
+                            sys.exit(0)
+                        else:
+                            response = {'error': 'Unknown command'}
+                        resp = pickle.dumps(response)
+                        resp_len = struct.pack('>I', len(resp))
+                        conn.sendall(resp_len + resp)
+                except Exception as e:
+                    print(f"[MouthModule] Connection error: {e}")
 
 def signal_handler(sig, frame):
     print('Exiting MouthModule...')
@@ -119,7 +122,7 @@ def signal_handler(sig, frame):
 
 signal.signal(signal.SIGINT, signal_handler)
 
-if __name__ == '__main__':
+if __name__ == '__main__' or __name__.endswith('.mouth_module'):
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('--lr', type=float, default=0.01)

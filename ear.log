@@ -1,0 +1,110 @@
+[EarModule] Listening on 127.0.0.1:5003
+[EarModule] Received 240 bytes from ('127.0.0.1', 54207)
+[EarModule] Decoded message: {'cmd': 'learn', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32), 'target_idx': 0}
+[EarModule] Processing learn command. Data type: <class 'numpy.ndarray'>, shape: (13,), target_idx: 0
+[EarModule] Received 229 bytes from ('127.0.0.1', 54209)
+[EarModule] Decoded message: {'cmd': 'recognize', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32)}
+[EarModule] Processing recognize command. Data type: <class 'numpy.ndarray'>, shape: (13,)
+[EarModule] Received 240 bytes from ('127.0.0.1', 54219)
+[EarModule] Decoded message: {'cmd': 'learn', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32), 'target_idx': 0}
+[EarModule] Processing learn command. Data type: <class 'numpy.ndarray'>, shape: (13,), target_idx: 0
+[EarModule] Received 229 bytes from ('127.0.0.1', 54220)
+[EarModule] Decoded message: {'cmd': 'recognize', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32)}
+[EarModule] Processing recognize command. Data type: <class 'numpy.ndarray'>, shape: (13,)
+[EarModule] Received 240 bytes from ('127.0.0.1', 54232)
+[EarModule] Decoded message: {'cmd': 'learn', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32), 'target_idx': 0}
+[EarModule] Processing learn command. Data type: <class 'numpy.ndarray'>, shape: (13,), target_idx: 0
+[EarModule] Received 229 bytes from ('127.0.0.1', 54233)
+[EarModule] Decoded message: {'cmd': 'recognize', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32)}
+[EarModule] Processing recognize command. Data type: <class 'numpy.ndarray'>, shape: (13,)
+[EarModule] Received 240 bytes from ('127.0.0.1', 54244)
+[EarModule] Decoded message: {'cmd': 'learn', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32), 'target_idx': 0}
+[EarModule] Processing learn command. Data type: <class 'numpy.ndarray'>, shape: (13,), target_idx: 0
+[EarModule] Received 229 bytes from ('127.0.0.1', 54245)
+[EarModule] Decoded message: {'cmd': 'recognize', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32)}
+[EarModule] Processing recognize command. Data type: <class 'numpy.ndarray'>, shape: (13,)
+[EarModule] Received 240 bytes from ('127.0.0.1', 54254)
+[EarModule] Decoded message: {'cmd': 'learn', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32), 'target_idx': 0}
+[EarModule] Processing learn command. Data type: <class 'numpy.ndarray'>, shape: (13,), target_idx: 0
+[EarModule] Received 229 bytes from ('127.0.0.1', 54255)
+[EarModule] Decoded message: {'cmd': 'recognize', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32)}
+[EarModule] Processing recognize command. Data type: <class 'numpy.ndarray'>, shape: (13,)
+[EarModule] Received 240 bytes from ('127.0.0.1', 54265)
+[EarModule] Decoded message: {'cmd': 'learn', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32), 'target_idx': 0}
+[EarModule] Processing learn command. Data type: <class 'numpy.ndarray'>, shape: (13,), target_idx: 0
+[EarModule] Received 229 bytes from ('127.0.0.1', 54266)
+[EarModule] Decoded message: {'cmd': 'recognize', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32)}
+[EarModule] Processing recognize command. Data type: <class 'numpy.ndarray'>, shape: (13,)
+[EarModule] Received 240 bytes from ('127.0.0.1', 54275)
+[EarModule] Decoded message: {'cmd': 'learn', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32), 'target_idx': 0}
+[EarModule] Processing learn command. Data type: <class 'numpy.ndarray'>, shape: (13,), target_idx: 0
+[EarModule] Received 229 bytes from ('127.0.0.1', 54276)
+[EarModule] Decoded message: {'cmd': 'recognize', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32)}
+[EarModule] Processing recognize command. Data type: <class 'numpy.ndarray'>, shape: (13,)
+[EarModule] Received 240 bytes from ('127.0.0.1', 54285)
+[EarModule] Decoded message: {'cmd': 'learn', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32), 'target_idx': 0}
+[EarModule] Processing learn command. Data type: <class 'numpy.ndarray'>, shape: (13,), target_idx: 0
+[EarModule] Received 229 bytes from ('127.0.0.1', 54287)
+[EarModule] Decoded message: {'cmd': 'recognize', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32)}
+[EarModule] Processing recognize command. Data type: <class 'numpy.ndarray'>, shape: (13,)
+[EarModule] Received 240 bytes from ('127.0.0.1', 54298)
+[EarModule] Decoded message: {'cmd': 'learn', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32), 'target_idx': 0}
+[EarModule] Processing learn command. Data type: <class 'numpy.ndarray'>, shape: (13,), target_idx: 0
+[EarModule] Received 229 bytes from ('127.0.0.1', 54299)
+[EarModule] Decoded message: {'cmd': 'recognize', 'data': array([-434.9341   ,   74.150955 ,   39.650826 ,   27.021141 ,
+         14.641716 ,    1.8771592,   -9.090355 ,  -19.200245 ,
+        -26.90893  ,  -31.701523 ,  -33.314175 ,  -31.922703 ,
+        -27.756006 ], dtype=float32)}
+[EarModule] Processing recognize command. Data type: <class 'numpy.ndarray'>, shape: (13,)
+[EarModule] Received 240 bytes from ('127.0.0.1', 54308)

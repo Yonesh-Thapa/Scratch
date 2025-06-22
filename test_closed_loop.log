@@ -1,0 +1,100 @@
+
+=== Training cycles for symbol: 0 ===
+Cycle 1
+Warning: No response from VisionModule.
+Warning: No response from HandModule.
+Warning: No response from EarModule.
+Warning: No response from MouthModule.
+Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
+Cycle 2
+Warning: No response from VisionModule.
+Warning: No response from HandModule.
+Warning: No response from EarModule.
+Warning: No response from MouthModule.
+Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
+Cycle 3
+Warning: No response from VisionModule.
+Warning: No response from HandModule.
+Warning: No response from EarModule.
+Warning: No response from MouthModule.
+Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
+Cycle 4
+Warning: No response from VisionModule.
+Warning: No response from HandModule.
+Warning: No response from EarModule.
+Warning: No response from MouthModule.
+Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
+Cycle 5
+Warning: No response from VisionModule.
+Warning: No response from HandModule.
+Warning: No response from EarModule.
+Warning: No response from MouthModule.
+Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
+Cycle 6
+Warning: No response from VisionModule.
+Warning: No response from HandModule.
+Warning: No response from EarModule.
+Warning: No response from MouthModule.
+Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
+Cycle 7
+Warning: No response from VisionModule.
+Warning: No response from HandModule.
+Warning: No response from EarModule.
+Warning: No response from MouthModule.
+Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
+Cycle 8
+Warning: No response from VisionModule.
+Warning: No response from HandModule.
+Warning: No response from EarModule.
+Warning: No response from MouthModule.
+Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
+Cycle 9
+Warning: No response from VisionModule.
+Warning: No response from HandModule.
+Warning: No response from EarModule.
+Warning: No response from MouthModule.
+Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
+Cycle 10
+Warning: No response from VisionModule.
+Warning: No response from HandModule.
+Warning: No response from EarModule.
+Warning: No response from MouthModule.
+Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
+Metrics for 0 saved to tests/metrics_0.npz
+
+=== Training cycles for symbol: 1 ===
+Cycle 1
+Warning: No response from VisionModule.
+Warning: No response from HandModule.
+Warning: No response from EarModule.
+Warning: No response from MouthModule.
+Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
+Cycle 2
+Warning: No response from VisionModule.
+Warning: No response from HandModule.
+Warning: No response from EarModule.
+Warning: No response from MouthModule.
+Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
+Cycle 3
+Warning: No response from VisionModule.
+Warning: No response from HandModule.
+Warning: No response from EarModule.
+Warning: No response from MouthModule.
+Vision acc: 0, Hand sim: 0.0000, Ear acc: 0, Mouth sim: 0.0000
+Cycle 4
+Warning: No response from VisionModule.
+Warning: No response from HandModule.
+
+[Closed Loop] Interrupted by user. Shutting down modules...
+Traceback (most recent call last):
+  File "C:\Users\yones\Scratch\tests\test_closed_loop.py", line 178, in <module>
+    vision.send({'cmd': 'shutdown'})
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yones\Scratch\comms\comms.py", line 17, in send
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+QObject::~QObject: Timers cannot be stopped from another thread

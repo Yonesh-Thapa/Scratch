@@ -1,5 +1,5 @@
 """
-EarModule: Listens to real audio samples, extracts features, learns audio-symbol associations.
+EarModule: Learns to recognize audio features of spoken symbols.
 Runs as an independent process, communicates via sockets/IPC.
 """
 import sys, os
@@ -12,31 +12,30 @@ except ImportError:
     sys.exit(1)
 import socket
 import pickle
-try:
-    import librosa
-except ImportError:  # pragma: no cover - optional dependency
-    librosa = None
-    print("[EarModule] librosa not available, audio feature extraction disabled")
-from symbols import SYMBOLS
 import atexit
 import signal
 import sys
-
-try:
-    from ear.ear_module import EarModule
-except ImportError:
-    pass  # No internal imports needed, placeholder for consistency
+import struct
+from symbols import SYMBOLS
 
 # Config
 HOST = '127.0.0.1'
 PORT = 5003
-SAMPLE_RATE = 16000
-N_MFCC = 13
 MEMORY_PATH = 'ear_weights.npy'
+FEAT_DIM = 13  # Typically MFCC dimension
+
+def recvall(conn, n):
+    data = b''
+    while len(data) < n:
+        packet = conn.recv(n - len(data))
+        if not packet:
+            return None
+        data += packet
+    return data
 
 class EarModule:
     def __init__(self, lr=0.01):
-        self.input_dim = N_MFCC
+        self.input_dim = FEAT_DIM
         self.output_dim = len(SYMBOLS)
         self.W = np.random.randn(self.output_dim, self.input_dim) * 0.01
         self.lr = lr
@@ -46,23 +45,17 @@ class EarModule:
             self.W = np.load(MEMORY_PATH)
         atexit.register(self.save_memory)
 
-    def extract_features(self, audio_path):
-        y, sr = librosa.load(audio_path, sr=SAMPLE_RATE)
-        mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=N_MFCC)
-        mfcc_mean = np.mean(mfcc, axis=1)
-        return mfcc_mean
-
-    def recognize(self, x):
-        y = np.dot(self.W, x)
+    def recognize(self, feat):
+        y = np.dot(self.W, feat)
         idx = np.argmax(y)
         return self.symbols[idx], y
 
-    def update(self, x, target_idx):
+    def update(self, idx, feat):
         target = np.zeros(self.output_dim)
-        target[target_idx] = 1.0
-        pred = np.dot(self.W, x)
-        error = target - pred
-        self.W += self.lr * np.outer(error, x)
+        target[idx] = 1.0
+        y = np.dot(self.W, feat)
+        error = target - (y == y.max()).astype(np.float32)
+        self.W += self.lr * error[:, None] * feat[None, :]
         return error
 
     def save_memory(self):
@@ -75,40 +68,50 @@ class EarModule:
             s.listen(1)
             print(f"[EarModule] Listening on {HOST}:{PORT}")
             while True:
-                conn, addr = s.accept()
-                with conn:
-                    try:
-                        data = b''
-                        while True:
-                            packet = conn.recv(4096)
-                            if not packet:
-                                break
-                            data += packet
+                try:
+                    conn, addr = s.accept()
+                    with conn:
+                        header = recvall(conn, 4)
+                        if not header:
+                            continue
+                        msg_len = struct.unpack('>I', header)[0]
+                        data = recvall(conn, msg_len)
                         if not data:
                             continue
-                        msg = pickle.loads(data)
+                        try:
+                            msg = pickle.loads(data)
+                            print(f"[EarModule] Decoded message: {msg}")
+                        except Exception as e:
+                            print(f"[EarModule] Error decoding message: {e}")
+                            resp = pickle.dumps({'error': f'Error decoding message: {e}'})
+                            resp_len = struct.pack('>I', len(resp))
+                            conn.sendall(resp_len + resp)
+                            continue
                         if msg['cmd'] == 'recognize':
-                            x = msg['data']
-                            label, y = self.recognize(x)
+                            feat = msg['data']
+                            print(f"[EarModule] Processing recognize command. Data type: {type(feat)}, shape: {getattr(feat, 'shape', None)}")
+                            label, y = self.recognize(feat)
                             response = {'label': label, 'y': y}
                         elif msg['cmd'] == 'learn':
-                            x = msg['data']
+                            feat = msg['data']
                             target_idx = msg['target_idx']
-                            if 0 <= target_idx < len(self.symbols):
-                                error = self.update(x, target_idx)
-                            else:
-                                print(f"[EarModule] Invalid target_idx: {target_idx}")
-                                error = np.zeros(self.output_dim)
+                            print(f"[EarModule] Processing learn command. Data type: {type(feat)}, shape: {getattr(feat, 'shape', None)}, target_idx: {target_idx}")
+                            error = self.update(target_idx, feat)
                             response = {'error': error}
+                        elif msg['cmd'] == 'shutdown':
+                            print('[EarModule] Shutdown command received. Exiting...')
+                            response = {'status': 'shutting down'}
+                            resp = pickle.dumps(response)
+                            resp_len = struct.pack('>I', len(resp))
+                            conn.sendall(resp_len + resp)
+                            sys.exit(0)
                         else:
                             response = {'error': 'Unknown command'}
-                        conn.sendall(pickle.dumps(response))
-                    except Exception as e:
-                        print(f"[EarModule] Error: {e}")
-                        try:
-                            conn.sendall(pickle.dumps({'error': str(e)}))
-                        except Exception as send_err:
-                            print(f"[EarModule] Failed to send error response: {send_err}")
+                        resp = pickle.dumps(response)
+                        resp_len = struct.pack('>I', len(resp))
+                        conn.sendall(resp_len + resp)
+                except Exception as e:
+                    print(f"[EarModule] Connection error: {e}")
 
 def signal_handler(sig, frame):
     print('Exiting EarModule...')
@@ -116,7 +119,7 @@ def signal_handler(sig, frame):
 
 signal.signal(signal.SIGINT, signal_handler)
 
-if __name__ == '__main__':
+if __name__ == '__main__' or __name__.endswith('.ear_module'):
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('--lr', type=float, default=0.01)
